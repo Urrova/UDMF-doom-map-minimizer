@@ -13,9 +13,9 @@ This is the main map from myhouse.pk3, and then minimized:
 ## Right now features:
 - Grabs WADs with individual UDMF maps and minimizes them.
 - Drag and drop multiple wads to batch process them.
+- Process WADs with multiple UDMF maps.
 
 ## TODO:
-- Process WADs with multiple UDMF maps.
 - Process PK3 files with a /maps/ directory with UDMF map wads.
 - Add options like removing ACS SCRIPTS source codes
 - GUI Interface
