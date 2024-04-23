@@ -19,3 +19,6 @@ This is the main map from myhouse.pk3, and then minimized:
 - Process PK3 files with a /maps/ directory with UDMF map wads.
 - Add options like removing ACS SCRIPTS source codes
 - GUI Interface
+
+## Dependencies:
+This python script needs OMGIFOL, a python library for managing wad files. It can be installed with `pip install omgifol`.

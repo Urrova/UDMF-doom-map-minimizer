@@ -68,8 +68,9 @@ def minimize_wad(wad_path):
     #Procesa SOLAMENTE el codigo
     for i, t in enumerate(textmap_parsed):
         if t[1] == 0:
-            textmap_parsed[i][0] = t[0].replace("\n".encode(), "".encode())
-            textmap_parsed[i][0] = t[0].replace(" ".encode(), "".encode())
+            textmap_parsed[i][0] = re.sub("//.*\n".encode(), "".encode(), textmap_parsed[i][0]) 
+            textmap_parsed[i][0] = textmap_parsed[i][0].replace("\n".encode(), "".encode())
+            textmap_parsed[i][0] = textmap_parsed[i][0].replace(" ".encode(), "".encode())
 
     print("Joining strings . . .")
 
