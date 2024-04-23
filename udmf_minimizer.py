@@ -57,6 +57,9 @@ def minimize_wad(wad_path):
     print("Minimizing TEXTMAP . . .")
     textmap_content = wad.udmfmaps[next(iter(wad.udmfmaps))]["TEXTMAP"].data
 
+    print("Removing comments . . .")
+    textmap_content = re.sub("//.*\n".encode(), "".encode(), textmap_content) 
+
     print("Separating strings . . .")
     textmap_parsed = separate_strings(textmap_content)
 
