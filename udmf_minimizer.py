@@ -54,9 +54,19 @@ def minimize_wad(wad_path):
     print(f"Loading WAD {wad_path} . . .")
     wad = omg.WAD(from_file = wad_path)
 
-    print("Minimizing TEXTMAP . . .")
-    textmap_content = wad.udmfmaps[next(iter(wad.udmfmaps))]["TEXTMAP"].data
+    
+    for map in wad.udmfmaps:
+        print(map)
+        minimize_map(wad.udmfmaps[map])
+    
+    print(f"Saving WAD {minimized_wad_path} . . .")
+    wad.to_file(minimized_wad_path)
+    
 
+
+def minimize_map(map):
+    print("Minimizing TEXTMAP . . .")
+    textmap_content = map["TEXTMAP"].data
     print("Removing comments . . .")
     textmap_content = re.sub("//.*\n".encode(), "".encode(), textmap_content) 
 
@@ -80,13 +90,9 @@ def minimize_wad(wad_path):
     print("Done.")
 
     new_textmap = omg.Lump(textmap_content)
-    wad.udmfmaps[next(iter(wad.udmfmaps))]["TEXTMAP"] = new_textmap
+    map["TEXTMAP"] = new_textmap
 
-    print(f"Saving WAD {minimized_wad_path} . . .")
-    wad.to_file(minimized_wad_path)
-
-    print("Finished minimizing.")
-
+    print("Map minimized.")
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
